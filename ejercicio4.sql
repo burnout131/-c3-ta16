@@ -1,0 +1,10 @@
+SELECT nombre FROM peliculas;
+SELECT DISTINCT CalificacionEdad FROM peliculas;
+SELECT * FROM peliculas WHERE CalificacionEdad IS NULL;
+SELECT * FROM salas WHERE pelicula IS NULL;
+SELECT s.CODIGO, s.NOMBRE, s.PELICULA AS 'Codigo Pelicula', p.NOMBRE AS 'Nombre Pelicula', p.CALIFICACIONEDAD FROM salas s LEFT JOIN peliculas p ON s.Pelicula = p.Codigo;
+SELECT p.CODIGO AS 'Codigo Pelicula', p.NOMBRE AS 'Nombre Pelicula', p.CALIFICACIONEDAD, s.CODIGO AS 'Codigo Sala', s.NOMBRE AS 'Nombre Sala' FROM salas s RIGHT JOIN peliculas p ON s.Pelicula = p.Codigo;
+SELECT peliculas.Nombre FROM salas RIGHT JOIN peliculas ON salas.Pelicula = peliculas.Codigo WHERE salas.Pelicula IS NULL;
+INSERT INTO peliculas(Codigo, Nombre, CalificacionEdad) VALUES(10, 'Uno, Dos, Tres', 7);
+UPDATE peliculas SET CalificacionEdad = 13 WHERE CalificacionEdad IS NULL;
+DELETE FROM salas WHERE Pelicula IN (SELECT Codigo FROM peliculas WHERE CalificacionEdad = 'PG');
